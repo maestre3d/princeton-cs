@@ -1,2 +1,2 @@
-# princeton-cs-coursera
-Coursera Princeton university computer science program code exercises and examples.
+# princeton-cs
+Code exercises and examples from Princeton university Computer Science online program(s).
