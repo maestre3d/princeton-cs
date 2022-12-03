@@ -6,10 +6,27 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * {@code WhitelistArray} is a {@link Whitelist} implementation backed by a {@link ArrayList}.
+ * Lookup performance depends solely on the {@link WhitelistArrayLookupType} used.
+ * <p>
+ * For SEQUENTIAL {@link WhitelistArrayLookupType}, the time complexity of the lookup algorithm is O(n) (i.e. linear time).
+ * In the other hand, for BINARY_SEARCH & BINARY_SEARCH_RECURSIVE, the time complexity of the lookup algorithm is O(log n) (i.e. logarithmic time).
+ */
 public class WhitelistArray implements Whitelist {
     private final ArrayList<String> list = new ArrayList<>();
     private final WhitelistArrayLookupType lookupType;
 
+    /**
+     * {@code WhitelistArray} is a {@link Whitelist} implementation backed by a {@link ArrayList}.
+     * Lookup performance depends solely on the {@link WhitelistArrayLookupType} used.
+     * <p>
+     * For SEQUENTIAL {@link WhitelistArrayLookupType}, the time complexity of the lookup algorithm is O(n) (i.e. linear time).
+     * In the other hand, for BINARY_SEARCH & BINARY_SEARCH_RECURSIVE, the time complexity of the lookup algorithm is O(log n) (i.e. logarithmic time).
+     *
+     * @param lookupType {@link WhitelistArrayLookupType} to be used as lookup algorithm.
+     * @param in         a {@link Reader} instance to be used as data source of the whitelist.
+     */
     public WhitelistArray(WhitelistArrayLookupType lookupType, Reader in) throws IOException {
         this.lookupType = lookupType;
         BufferedReader buf = new BufferedReader(in);
@@ -39,8 +56,8 @@ public class WhitelistArray implements Whitelist {
      */
     private Boolean sequentialLookup(String s) {
         // We implement manually list.contains() to observe the full lookup process.
-        for (int i = 0; i < this.list.size(); i++) {
-            String val = this.list.get(i);
+        for (int i = 0; i < list.size(); i++) {
+            String val = list.get(i);
             if (val.equals(s)) return true;
         }
 
