@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Sort<T> {
-    private T[] aux;
-
     public static <T> void insertionSort(T[] items, Comparator<? super T> comparator) {
         for (int i = 1; i < items.length; i++) {
             for (int j = i; j > 0; j--) {

@@ -75,12 +75,12 @@ public class WhitelistArray implements Whitelist {
             int midPtr = lowPtr + (highPtr - lowPtr) / 2;
             int cmp = list.get(midPtr).compareTo(s);
 
-            if (cmp < 0)
-                lowPtr = midPtr + 1;
-            else if (cmp > 0)
-                highPtr = midPtr;
-            else
+            if (cmp == 0)
                 return true;
+            else if (cmp < 0)
+                lowPtr = midPtr + 1;
+            else
+                highPtr = midPtr;
         }
 
         return false;
