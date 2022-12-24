@@ -39,4 +39,38 @@ public class LinkedStackTest {
         assertNull(null, queue.dequeue());
         assertEquals(0, queue.count());
     }
+
+    @Test
+    public void testArrayStackFixed() {
+        Stack<String> stack = new ArrayStack<>(3);
+        stack.push("foo");
+        stack.push("bar");
+        stack.push("baz");
+        assertEquals(3, stack.count());
+        assertEquals("baz", stack.pop());
+        assertEquals(2, stack.count());
+        assertEquals("bar", stack.pop());
+        assertEquals(1, stack.count());
+        assertEquals("foo", stack.pop());
+        assertEquals(0, stack.count());
+        assertNull(null, stack.pop());
+        assertEquals(0, stack.count());
+    }
+
+    @Test
+    public void testArrayStack() {
+        Stack<String> stack = new ArrayStack<>();
+        stack.push("foo");
+        stack.push("bar");
+        stack.push("baz");
+        assertEquals(3, stack.count());
+        assertEquals("baz", stack.pop());
+        assertEquals(2, stack.count());
+        assertEquals("bar", stack.pop());
+        assertEquals(1, stack.count());
+        assertEquals("foo", stack.pop());
+        assertEquals(0, stack.count());
+        assertNull(null, stack.pop());
+        assertEquals(0, stack.count());
+    }
 }
