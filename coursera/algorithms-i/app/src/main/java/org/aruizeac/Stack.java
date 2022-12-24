@@ -6,4 +6,6 @@ public interface Stack<T> {
     T pop();
 
     int count();
+
+    T peek();
 }

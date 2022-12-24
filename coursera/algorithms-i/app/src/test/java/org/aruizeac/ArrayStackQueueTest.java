@@ -14,6 +14,8 @@ public class ArrayStackQueueTest {
         stack.push("bar");
         stack.push("baz");
         assertEquals(3, stack.count());
+        assertEquals("baz", stack.peek());
+        assertEquals(3, stack.count());
         assertEquals("baz", stack.pop());
         assertEquals(2, stack.count());
         assertEquals("bar", stack.pop());
@@ -30,6 +32,8 @@ public class ArrayStackQueueTest {
         stack.push("foo");
         stack.push("bar");
         stack.push("baz");
+        assertEquals(3, stack.count());
+        assertEquals("baz", stack.peek());
         assertEquals(3, stack.count());
         assertEquals("baz", stack.pop());
         assertEquals(2, stack.count());
@@ -52,6 +56,8 @@ public class ArrayStackQueueTest {
         queue.enqueue("bar");
         queue.enqueue("baz");
         assertEquals(3, queue.count());
+        assertEquals("foo", queue.peek());
+        assertEquals(3, queue.count());
         assertEquals("foo", queue.dequeue());
         assertEquals(2, queue.count());
         assertEquals("bar", queue.dequeue());
@@ -72,6 +78,8 @@ public class ArrayStackQueueTest {
         queue.enqueue("foo");
         queue.enqueue("bar");
         queue.enqueue("baz");
+        assertEquals(3, queue.count());
+        assertEquals("foo", queue.peek());
         assertEquals(3, queue.count());
         assertEquals("foo", queue.dequeue());
         assertEquals(2, queue.count());

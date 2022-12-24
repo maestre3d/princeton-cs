@@ -23,6 +23,11 @@ public class LinkedQueue<T> implements Queue<T> {
         return node.getVal();
     }
 
+    public T peek() {
+        if (headNode == null) return null;
+        return headNode.getVal();
+    }
+
     public int count() {
         return this.count;
     }

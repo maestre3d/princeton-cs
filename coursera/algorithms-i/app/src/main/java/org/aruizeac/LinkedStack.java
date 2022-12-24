@@ -22,6 +22,11 @@ public class LinkedStack<T> implements Stack<T> {
         return res;
     }
 
+    public T peek() {
+        if (headNode == null) return null;
+        return headNode.getVal();
+    }
+
     public int count() {
         return this.count;
     }

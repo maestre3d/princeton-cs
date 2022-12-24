@@ -1,20 +1,20 @@
 package org.aruizeac;
 
 public class ArrayStack<T> implements Stack<T> {
-    private Object[] buf;
+    private T[] buf;
     private int pivot;
 
     public ArrayStack() {
-        buf = new Object[1];
+        buf = (T[])new Object[1];
     }
 
     public ArrayStack(int capacity) {
-        buf = new Object[capacity];
+        buf = (T[])new Object[capacity];
     }
 
     private void resizeBuffer(int capacity) {
         // repeated doubling - Golang-like slice implementation
-        Object[] tmpBuf = new Object[capacity];
+        T[] tmpBuf = (T[])new Object[capacity];
         System.arraycopy(buf, 0, tmpBuf, 0, buf.length);
         buf = tmpBuf;
     }
@@ -28,10 +28,15 @@ public class ArrayStack<T> implements Stack<T> {
     public T pop() {
         if (pivot == 0) return null;
         pivot--;
-        T res = (T)buf[pivot];
+        T res = buf[pivot];
         buf[pivot] = null;
 //        if (pivot > 0 && pivot == buf.length/4) resizeBuffer(buf.length/2);
         return res;
+    }
+
+    public T peek() {
+        if (pivot == 0) return null;
+        return buf[pivot-1];
     }
 
     public int count() {

@@ -1,22 +1,22 @@
 package org.aruizeac;
 
 public class ArrayQueue<T> implements Queue<T> {
-    private Object[] buffer;
+    private T[] buffer;
     private int headPivot, tailPivot;
     private final boolean isDynamic;
 
     public ArrayQueue() {
-        buffer = new Object[1];
+        buffer = (T[]) new Object[1];
         isDynamic = true;
     }
 
     public ArrayQueue(int capacity) {
-        buffer = new Object[capacity];
+        buffer = (T[])new Object[capacity];
         isDynamic = false;
     }
 
     private void resizeBuffer(int capacity) {
-        Object[] tmpBuf = new Object[capacity];
+        T[] tmpBuf = (T[])new Object[capacity];
         System.arraycopy(buffer, 0, tmpBuf, 0, buffer.length);
         buffer = tmpBuf;
     }
@@ -30,12 +30,17 @@ public class ArrayQueue<T> implements Queue<T> {
 
     public T dequeue() {
         if (tailPivot == 0) return null;
-        T res = (T)buffer[headPivot];
+        T res = buffer[headPivot];
         buffer[headPivot] = null;
         headPivot++;
         if (headPivot == tailPivot) headPivot = tailPivot = 0;
 //        if (headPivot > 0 && headPivot == buffer.length/4) resizeBuffer(buffer.length / 2);
         return res;
+    }
+
+    public T peek() {
+        if (tailPivot == 0) return null;
+        return buffer[headPivot];
     }
 
     public int count() {
