@@ -30,7 +30,7 @@ public class ArrayStack<T> implements Stack<T> {
         pivot--;
         T res = (T)buf[pivot];
         buf[pivot] = null;
-        if (pivot > 0 && pivot == buf.length/4) resizeBuffer(buf.length/2);
+//        if (pivot > 0 && pivot == buf.length/4) resizeBuffer(buf.length/2);
         return res;
     }
 
