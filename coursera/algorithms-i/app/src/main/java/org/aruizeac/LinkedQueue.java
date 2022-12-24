@@ -31,4 +31,12 @@ public class LinkedQueue<T> implements Queue<T> {
     public int count() {
         return this.count;
     }
+
+    public boolean hasNext() {
+        return count > 0;
+    }
+
+    public T next() {
+        return dequeue();
+    }
 }

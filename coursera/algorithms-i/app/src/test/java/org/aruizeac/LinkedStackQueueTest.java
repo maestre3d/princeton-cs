@@ -2,12 +2,15 @@ package org.aruizeac;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class LinkedStackQueueTest {
     @Test
-    public void testLinkedList() {
+    public void testStack() {
         Stack<String> stack = new LinkedStack<>();
         stack.push("foo");
         stack.push("bar");
@@ -26,7 +29,7 @@ public class LinkedStackQueueTest {
     }
 
     @Test
-    public void testLinkedQueue() {
+    public void testQueue() {
         Queue<String> queue = new LinkedQueue<>();
         queue.enqueue("foo");
         queue.enqueue("bar");
@@ -42,5 +45,43 @@ public class LinkedStackQueueTest {
         assertEquals(0, queue.count());
         assertNull(null, queue.dequeue());
         assertEquals(0, queue.count());
+    }
+
+    @Test
+    public void testStackIterator() {
+        Stack<String> stack = new LinkedStack<>();
+        stack.push("foo");
+        stack.push("bar");
+        stack.push("baz");
+
+        Map<Integer, String> exp = new HashMap<>() {{
+            put(0, "baz");
+            put(1, "bar");
+            put(2, "foo");
+        }};
+        int count = 0;
+        while (stack.hasNext()) {
+            assertEquals(exp.get(count), stack.next());
+            count++;
+        }
+    }
+
+    @Test
+    public void testQueueIterator() {
+        Queue<String> queue = new LinkedQueue<>();
+        queue.enqueue("foo");
+        queue.enqueue("bar");
+        queue.enqueue("baz");
+
+        Map<Integer, String> exp = new HashMap<>() {{
+            put(0, "foo");
+            put(1, "bar");
+            put(2, "baz");
+        }};
+        int count = 0;
+        while (queue.hasNext()) {
+            assertEquals(exp.get(count), queue.next());
+            count++;
+        }
     }
 }

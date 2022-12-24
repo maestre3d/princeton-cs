@@ -34,7 +34,7 @@ public class ArrayQueue<T> implements Queue<T> {
         buffer[headPivot] = null;
         headPivot++;
         if (headPivot == tailPivot) headPivot = tailPivot = 0;
-//        if (headPivot > 0 && headPivot == buffer.length/4) resizeBuffer(buffer.length / 2);
+        //        if (headPivot > 0 && headPivot == buffer.length/4) resizeBuffer(buffer.length / 2);
         return res;
     }
 
@@ -45,5 +45,13 @@ public class ArrayQueue<T> implements Queue<T> {
 
     public int count() {
         return tailPivot - headPivot;
+    }
+
+    public boolean hasNext() {
+        return count() > 0;
+    }
+
+    public T next() {
+        return dequeue();
     }
 }

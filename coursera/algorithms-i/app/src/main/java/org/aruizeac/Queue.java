@@ -1,6 +1,8 @@
 package org.aruizeac;
 
-public interface Queue<T> {
+import java.util.Iterator;
+
+public interface Queue<T> extends Iterator<T> {
     void enqueue(T val);
     T dequeue();
     int count();

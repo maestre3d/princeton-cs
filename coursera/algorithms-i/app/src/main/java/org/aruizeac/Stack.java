@@ -1,6 +1,8 @@
 package org.aruizeac;
 
-public interface Stack<T> {
+import java.util.Iterator;
+
+public interface Stack<T> extends Iterator<T> {
     void push(T val);
 
     T pop();

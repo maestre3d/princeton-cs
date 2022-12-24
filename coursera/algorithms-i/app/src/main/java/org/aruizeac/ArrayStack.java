@@ -1,6 +1,8 @@
 package org.aruizeac;
 
-public class ArrayStack<T> implements Stack<T> {
+import java.util.Iterator;
+
+public class ArrayStack<T> implements Stack<T>, Iterator<T> {
     private T[] buf;
     private int pivot;
 
@@ -41,5 +43,13 @@ public class ArrayStack<T> implements Stack<T> {
 
     public int count() {
         return pivot;
+    }
+
+    public boolean hasNext() {
+        return count() > 0;
+    }
+
+    public T next() {
+        return pop();
     }
 }

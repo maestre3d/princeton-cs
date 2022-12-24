@@ -2,13 +2,15 @@ package org.aruizeac;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.junit.Assert.*;
 
 public class ArrayStackQueueTest {
 
     @Test
-    public void testArrayStackFixed() {
+    public void testStackFixed() {
         Stack<String> stack = new ArrayStack<>(3);
         stack.push("foo");
         stack.push("bar");
@@ -27,7 +29,7 @@ public class ArrayStackQueueTest {
     }
 
     @Test
-    public void testArrayStack() {
+    public void testStack() {
         Stack<String> stack = new ArrayStack<>();
         stack.push("foo");
         stack.push("bar");
@@ -46,7 +48,7 @@ public class ArrayStackQueueTest {
     }
 
     @Test
-    public void testArrayQueueFixed() {
+    public void testQueueFixed() {
         Queue<String> queue = new ArrayQueue<>(3);
         queue.enqueue("foo");
         assertEquals(1, queue.count());
@@ -69,7 +71,7 @@ public class ArrayStackQueueTest {
     }
 
     @Test
-    public void testArrayQueue() {
+    public void testQueue() {
         Queue<String> queue = new ArrayQueue<>();
         queue.enqueue("foo");
         assertEquals(1, queue.count());
@@ -89,5 +91,43 @@ public class ArrayStackQueueTest {
         assertEquals(0, queue.count());
         assertNull(null, queue.dequeue());
         assertEquals(0, queue.count());
+    }
+
+    @Test
+    public void testStackIterator() {
+        Stack<String> stack = new ArrayStack<>();
+        stack.push("foo");
+        stack.push("bar");
+        stack.push("baz");
+
+        Map<Integer, String> exp = new HashMap<>() {{
+            put(0, "baz");
+            put(1, "bar");
+            put(2, "foo");
+        }};
+        int count = 0;
+        while (stack.hasNext()) {
+            assertEquals(exp.get(count), stack.next());
+            count++;
+        }
+    }
+
+    @Test
+    public void testQueueIterator() {
+        Queue<String> queue = new ArrayQueue<>();
+        queue.enqueue("foo");
+        queue.enqueue("bar");
+        queue.enqueue("baz");
+
+        Map<Integer, String> exp = new HashMap<>() {{
+            put(0, "foo");
+            put(1, "bar");
+            put(2, "baz");
+        }};
+        int count = 0;
+        while (queue.hasNext()) {
+            assertEquals(exp.get(count), queue.next());
+            count++;
+        }
     }
 }
